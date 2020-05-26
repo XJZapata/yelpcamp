@@ -18,7 +18,11 @@ var commentRoutes    = require("./routes/comments"),
     
 // mongoose.connect("mongodb://localhost/yelp_camp_v13", {useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false});
 //mongodb+srv://xjzapata:Sole!234@cluster0-betjc.mongodb.net/test?retryWrites=true&w=majority
-mongoose.connect("mongodb+srv://xjzapata:Sole!234@cluster0-betjc.mongodb.net/test?retryWrites=true&w=majority", {useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false});
+mongoose.connect("mongodb+srv://xjzapata:Sole!234@cluster0-betjc.mongodb.net/test?retryWrites=true&w=majority", {useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false}, function(err));{
+    if(err){
+        return console.error("failed");
+    }
+}
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
